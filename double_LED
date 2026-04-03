@@ -1,0 +1,34 @@
+int LED_1 = 10;
+bool LED_1_State = LOW;
+int LED_2 = 11;
+bool LED_2_State = LOW;
+
+void setup() {
+  pinMode(LED_1, OUTPUT); // Set the voltage to output at pin 10
+  pinMode(LED_2, OUTPUT); // Set the voltage to output at pin 11
+}
+
+void loop() {
+  unsigned long currentMillis = millis(); // Set variable to keep track of time in milliseconds
+  
+  if (currentMillis % 500 == 0) { // If the current time is divisible by 500 then toggle the first LED
+    if (LED_1_State) { // If the first LED is high toggle it to low
+      LED_1_State = LOW;
+      digitalWrite(LED_1, LOW);
+    } else { // If the first LED is low toggle it to high
+      LED_1_State = HIGH;
+      digitalWrite(LED_1, HIGH);
+    }
+  }
+
+  if (currentMillis % 1000 == 0) { // If the current time is divisible by 1000 then toggle the second LED
+    if (LED_2_State) { // If the second LED is high toggle it to low
+      LED_2_State = LOW;
+      digitalWrite(LED_2, LOW);
+    } else { // If the second LED is low toggle it to high
+      LED_2_State = HIGH;
+      digitalWrite(LED_2, HIGH);
+    }
+  }
+  delay(1); // Delay by 1 millisecond as otherwise it will cycle tons of times and toggle on and off faster than visible
+}
